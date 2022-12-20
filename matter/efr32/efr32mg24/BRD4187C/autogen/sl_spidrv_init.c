@@ -15,13 +15,13 @@ SPIDRV_Init_t sl_spidrv_eusart_init_exp = {
   .portRx = SL_SPIDRV_EUSART_EXP_RX_PORT,
   .portClk = SL_SPIDRV_EUSART_EXP_SCLK_PORT,
 #if defined(SL_SPIDRV_EUSART_EXP_CS_PORT)
-  .portCs = SL_SPIDRV_EUSART_EXP_CS_PORT,
+  //.portCs = SL_SPIDRV_EUSART_EXP_CS_PORT,
 #endif
   .pinTx = SL_SPIDRV_EUSART_EXP_TX_PIN,
   .pinRx = SL_SPIDRV_EUSART_EXP_RX_PIN,
   .pinClk = SL_SPIDRV_EUSART_EXP_SCLK_PIN,
 #if defined(SL_SPIDRV_EUSART_EXP_CS_PIN)
-  .pinCs = SL_SPIDRV_EUSART_EXP_CS_PIN,
+  //.pinCs = SL_SPIDRV_EUSART_EXP_CS_PIN,
 #endif
   .bitRate = SL_SPIDRV_EUSART_EXP_BITRATE,
   .frameLength = SL_SPIDRV_EUSART_EXP_FRAME_LENGTH,
@@ -38,6 +38,7 @@ void sl_spidrv_init_instances(void) {
   EFM_ASSERT(sl_spidrv_eusart_init_exp.csControl == spidrvCsControlAuto);
 #endif 
   SPIDRV_Init(sl_spidrv_eusart_exp_handle, &sl_spidrv_eusart_init_exp);
+  GPIO_PinModeSet(SL_SPIDRV_EUSART_EXP_CS_PORT, SL_SPIDRV_EUSART_EXP_CS_PIN, gpioModePushPull, 1);
 }
 
 #endif
